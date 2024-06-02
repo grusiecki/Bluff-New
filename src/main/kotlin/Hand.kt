@@ -6,21 +6,23 @@ open class Hand {
 
     init {
         this.hand = arrayListOf()
-     }
-    fun clear(){
+    }
+
+    fun clear() {
         hand.clear()
     }
-    fun add(card: Card){
+
+    fun add(card: Card) {
         hand.add(card)
     }
+
     fun show(): String {
         var str: String = ""
-        for (c in hand){
+        for (c in hand) {
             str += "${c.figure.name} ${c.color.name} "
         }
         return str
     }
-
 
 
 }

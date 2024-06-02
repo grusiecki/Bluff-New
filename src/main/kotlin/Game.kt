@@ -57,33 +57,36 @@ class Game {
                     typeSet = readln().toString();
                     val ch1 = Checkers()
                     checker = ch1.checkAnswerSetOfCards(typeSet);
-                    if(checker == Pair(true, false)){
+                    if (checker == Pair(true, false)) {
                         biggerOrSmaller = ch1.biggerOrSmallerSet(beforeSet, typeSet)
-                        if(biggerOrSmaller == 0){
+                        if (biggerOrSmaller == 0) {
                             checker = falseInfo()
-                        }else if(biggerOrSmaller == 1){
+                        } else if (biggerOrSmaller == 1) {
                             pairAnswer = ch1.checkAnswerCardLevel(typeSet);
                             when (typeSet) {
                                 "1 card", "pair", "three", "four" -> {
                                     currentAnswer1 = pairAnswer.second.first
                                     biggerOrSmaller = ch1.biggerOrSmallerCard(previousAnswer1, currentAnswer1);
-                                    if(biggerOrSmaller == 0 || biggerOrSmaller ==1){
+                                    if (biggerOrSmaller == 0 || biggerOrSmaller == 1) {
                                         checker = falseInfo()
                                     }
                                 }
+
                                 "flush" -> {
                                     currentAnswer1 = pairAnswer.second.first
                                     biggerOrSmaller = ch1.biggerOrSmallerColor(previousAnswer1, currentAnswer1);
-                                    if(biggerOrSmaller == 0 || biggerOrSmaller == 1){
+                                    if (biggerOrSmaller == 0 || biggerOrSmaller == 1) {
                                         checker = falseInfo()
                                     }
                                 }
+
                                 "straight" -> {
                                     currentAnswer1 = pairAnswer.second.first
-                                    if(currentAnswer1 =="small" && previousAnswer1 == "big" || currentAnswer1 =="small" && previousAnswer1 == "small" || currentAnswer1 =="big" && previousAnswer1 == "big" ){
+                                    if (currentAnswer1 == "small" && previousAnswer1 == "big" || currentAnswer1 == "small" && previousAnswer1 == "small" || currentAnswer1 == "big" && previousAnswer1 == "big") {
                                         checker = falseInfo()
                                     }
                                 }
+
                                 "two pairs" -> {
                                     currentAnswer1 = pairAnswer.second.first
                                     currentAnswer2 = pairAnswer.second.second
@@ -91,56 +94,59 @@ class Game {
                                     var previousBiggerPair: String
                                     var currentSmallerPair: String
                                     var previousSmallerPair: String
-                                    biggerOrSmaller= ch1.biggerOrSmallerCard(currentAnswer1, currentAnswer2)
-                                     if(biggerOrSmaller==0){
+                                    biggerOrSmaller = ch1.biggerOrSmallerCard(currentAnswer1, currentAnswer2)
+                                    if (biggerOrSmaller == 0) {
                                         currentBiggerPair = currentAnswer1
-                                         currentSmallerPair = currentAnswer2
-                                    }  else{
+                                        currentSmallerPair = currentAnswer2
+                                    } else {
                                         currentBiggerPair = currentAnswer2
                                         currentSmallerPair = currentAnswer1
                                     }
                                     biggerOrSmaller = ch1.biggerOrSmallerCard(previousAnswer1, previousAnswer2)
-                                    if(biggerOrSmaller ==0){
+                                    if (biggerOrSmaller == 0) {
                                         previousBiggerPair = previousAnswer1
                                         previousSmallerPair = previousAnswer2
-                                    }else{
+                                    } else {
                                         previousBiggerPair = previousAnswer2
                                         previousSmallerPair = previousAnswer1
                                     }
                                     biggerOrSmaller = ch1.biggerOrSmallerCard(previousBiggerPair, currentBiggerPair)
-                                    if(biggerOrSmaller==0){
+                                    if (biggerOrSmaller == 0) {
                                         checker = falseInfo()
-                                        }else if(biggerOrSmaller ==1){
-                                            biggerOrSmaller= ch1.biggerOrSmallerCard(previousSmallerPair, currentSmallerPair);
-                                            if(biggerOrSmaller == 0){
-                                                checker = falseInfo()
-                                            }
-
+                                    } else if (biggerOrSmaller == 1) {
+                                        biggerOrSmaller =
+                                            ch1.biggerOrSmallerCard(previousSmallerPair, currentSmallerPair);
+                                        if (biggerOrSmaller == 0) {
+                                            checker = falseInfo()
                                         }
+
+                                    }
                                 }
+
                                 "full" -> {
                                     currentAnswer1 = pairAnswer.second.first
                                     currentAnswer2 = pairAnswer.second.second
                                     biggerOrSmaller = ch1.biggerOrSmallerCard(previousAnswer1, currentAnswer1)
-                                    if(biggerOrSmaller==0){
+                                    if (biggerOrSmaller == 0) {
                                         checker = falseInfo()
-                                    }else if(biggerOrSmaller==1){
+                                    } else if (biggerOrSmaller == 1) {
                                         biggerOrSmaller = ch1.biggerOrSmallerCard(previousAnswer2, currentAnswer2)
-                                        if(biggerOrSmaller==0 ){
+                                        if (biggerOrSmaller == 0) {
                                             checker = falseInfo()
-                                        }else if(!pairAnswer.first){
-                                            checker = Pair(false,false)
+                                        } else if (!pairAnswer.first) {
+                                            checker = Pair(false, false)
                                         }
                                     }
                                 }
+
                                 "royal flush" -> {
                                     currentAnswer1 = pairAnswer.second.first
                                     currentAnswer2 = pairAnswer.second.second
-                                    if(currentAnswer1 =="small" && previousAnswer1 == "big"){
+                                    if (currentAnswer1 == "small" && previousAnswer1 == "big") {
                                         checker = falseInfo()
-                                    }else if( currentAnswer1 =="small" && previousAnswer1 == "small" || currentAnswer1 =="big" && previousAnswer1 == "big" ){
+                                    } else if (currentAnswer1 == "small" && previousAnswer1 == "small" || currentAnswer1 == "big" && previousAnswer1 == "big") {
                                         biggerOrSmaller = ch1.biggerOrSmallerColor(previousAnswer2, currentAnswer2)
-                                        if(biggerOrSmaller==0){
+                                        if (biggerOrSmaller == 0) {
                                             checker = falseInfo()
                                         }
                                     }
@@ -148,12 +154,13 @@ class Game {
                                 }
 
                             }
-                        }else{
+                        } else {
                             pairAnswer = ch1.checkAnswerCardLevel(typeSet);
                             checker = Pair(pairAnswer.first, false)
                             currentAnswer1 = pairAnswer.second.first
                             currentAnswer2 = pairAnswer.second.second
-                        }                    }
+                        }
+                    }
 
                 }
                 if (checker == Pair(true, false)) {
@@ -170,9 +177,10 @@ class Game {
 
 
     }
-fun falseInfo(): Pair<Boolean, Boolean>{
-    println("Set cannot be smaller then previous player");
-    return Pair(false, false)
-}
+
+    fun falseInfo(): Pair<Boolean, Boolean> {
+        println("Set cannot be smaller then previous player");
+        return Pair(false, false)
+    }
 
 }
