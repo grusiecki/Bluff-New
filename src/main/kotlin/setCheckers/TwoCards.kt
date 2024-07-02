@@ -6,10 +6,22 @@ import org.example.Figure
 class TwoCards: CheckIfExist() {
     override fun check(listOfCards: ArrayList<Card>, card: String): Boolean {
         val listOfFigures = ArrayList<Figure>()
-        for (card in listOfCards) {
-            listOfFigures.add(card.figure)
+        val contain :Boolean
+        for (card1 in listOfCards) {
+            listOfFigures.add(card1.figure)
         }
-        val figure = Figure.valueOf(card.uppercase())
-        val contain = listOfFigures.contains(figure)
+        val figure: Figure = if(card == "9"){
+            Figure.valueOf("NINE")
+        }else if(card == "10"){
+            Figure.valueOf("TEN")
+        }else{
+            Figure.valueOf(card.uppercase())
+        }
+        val occurrences = listOfFigures.count{it == figure}
+        contain = if(occurrences >= 2){
+            true
+        }else{
+            false
+        }
         return contain    }
 }
