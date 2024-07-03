@@ -1,11 +1,7 @@
 import org.example.Color
 import org.example.Card
 import org.example.Figure
-import org.example.setCheckers.FourCards
-import org.example.setCheckers.OneCard
-import org.example.setCheckers.ThreeCards
-import org.example.setCheckers.TwoCards
-import org.junit.jupiter.api.BeforeEach
+import org.example.setCheckers.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -26,7 +22,7 @@ class CheckIfExistTest {
         deck.add(card4)
         deck.add(card5)
         val oneCard = OneCard()
-        val passed =oneCard.check(deck, "9")
+        val passed =oneCard.check(deck, "9","mockup")
         assertEquals(true, passed)
     }
     @Test
@@ -39,7 +35,7 @@ class CheckIfExistTest {
         deck.add(card4)
         deck.add(card5)
         val oneCard = OneCard()
-        val passed =oneCard.check(deck, "9")
+        val passed =oneCard.check(deck, "9","mockup")
         assertEquals(false, passed)
     }
     @Test
@@ -52,7 +48,7 @@ class CheckIfExistTest {
         deck.add(card4)
         deck.add(card5)
         val twoCards = TwoCards()
-        val passed = twoCards.check(deck, "9")
+        val passed = twoCards.check(deck, "9","mockup")
         assertEquals(true, passed)
     }
     @Test
@@ -65,7 +61,7 @@ class CheckIfExistTest {
         deck.add(card4)
         deck.add(card5)
         val twoCards = TwoCards()
-        val passed = twoCards.check(deck, "9")
+        val passed = twoCards.check(deck, "9","mockup")
         assertEquals(false, passed)
     }
     @Test
@@ -78,7 +74,7 @@ class CheckIfExistTest {
         deck.add(card4)
         deck.add(card5)
         val threeCards = ThreeCards()
-        val passed = threeCards.check(deck, "9")
+        val passed = threeCards.check(deck, "9","mockup")
         assertEquals(true, passed)
     }
     @Test
@@ -91,7 +87,7 @@ class CheckIfExistTest {
         deck.add(card4)
         deck.add(card5)
         val threeCards = ThreeCards()
-        val passed = threeCards.check(deck, "9")
+        val passed = threeCards.check(deck, "9","mockup")
         assertEquals(false, passed)
     }
     @Test
@@ -104,7 +100,7 @@ class CheckIfExistTest {
         deck.add(card1)
         deck.add(card5)
         val fourCards = FourCards()
-        val passed = fourCards.check(deck, "9")
+        val passed = fourCards.check(deck, "9","mockup")
         assertEquals(true, passed)
     }
     @Test
@@ -117,7 +113,59 @@ class CheckIfExistTest {
         deck.add(card4)
         deck.add(card5)
         val fourCards = FourCards()
-        val passed = fourCards.check(deck, "9")
+        val passed = fourCards.check(deck, "9","mockup")
+        assertEquals(false, passed)
+    }
+    @Test
+    fun checkTwoPairsPositive(){
+
+        val deck: ArrayList<Card> = arrayListOf()
+        deck.add(card1)
+        deck.add(card1)
+        deck.add(card3)
+        deck.add(card3)
+        deck.add(card3)
+        val twoPairs = TwoPairs()
+        val passed = twoPairs.check(deck, "9","Jack")
+        assertEquals(true, passed)
+    }
+    @Test
+    fun checkTwoPairsNegative(){
+
+        val deck: ArrayList<Card> = arrayListOf()
+        deck.add(card1)
+        deck.add(card1)
+        deck.add(card3)
+        deck.add(card4)
+        deck.add(card5)
+        val twoPairs = TwoPairs()
+        val passed = twoPairs.check(deck, "9","Jack")
+        assertEquals(false, passed)
+    }
+    @Test
+    fun checkFullPositive(){
+
+        val deck: ArrayList<Card> = arrayListOf()
+        deck.add(card2)
+        deck.add(card2)
+        deck.add(card2)
+        deck.add(card4)
+        deck.add(card4)
+        val full = Full()
+        val passed = full.check(deck, "10","Queen")
+        assertEquals(true, passed)
+    }
+    @Test
+    fun checkFullNegative(){
+
+        val deck: ArrayList<Card> = arrayListOf()
+        deck.add(card1)
+        deck.add(card1)
+        deck.add(card3)
+        deck.add(card4)
+        deck.add(card5)
+        val full = Full()
+        val passed = full.check(deck, "9","Jack")
         assertEquals(false, passed)
     }
 }

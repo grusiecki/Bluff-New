@@ -6,6 +6,7 @@ class Game() {
     var listOfPlayers = ArrayList<Player>()
     private var deck = Deck()
     var currentAnswer1 = "9"
+    var currentAnswer2 = "9"
 
     fun beforeFirstGame() {
         do {
@@ -43,7 +44,7 @@ class Game() {
         var typeSet = "1 card"
         var beforeSet = "1 card"
 
-        var currentAnswer2 = "9"
+
         var previousAnswer1 = "8"
         var previousAnswer2 = "8"
         var checker = Pair(false, false)

@@ -1,6 +1,7 @@
 package org.example.setCheckers
 
 import org.example.Card
+import org.example.Figure
 import org.example.Player
 
 abstract class CheckIfExist {
@@ -15,6 +16,17 @@ abstract class CheckIfExist {
         }
         return listOfCards
     }
+    fun validator(answer1: String ): Figure{
 
-    abstract fun check(listOfCards: ArrayList<Card>, card: String): Boolean
+        val figure: Figure = if (answer1 == "9") {
+            Figure.valueOf("NINE")
+        } else if (answer1 == "10") {
+            Figure.valueOf("TEN")
+        } else {
+            Figure.valueOf(answer1.uppercase())
+        }
+        return figure;
+    }
+
+    abstract fun check(listOfCards: ArrayList<Card>, answer1: String, answer2: String): Boolean
 }

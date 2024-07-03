@@ -2,23 +2,16 @@ package org.example.setCheckers
 
 import org.example.Card
 import org.example.Figure
-import org.example.setCheckers.CheckIfExist
 
 class OneCard : CheckIfExist() {
 
 
-    override fun check(listOfCards: ArrayList<Card>, card: String): Boolean {
+    override fun check(listOfCards: ArrayList<Card>, answer1: String, answer2: String): Boolean {
         val listOfFigures = ArrayList<Figure>()
         for (cards in listOfCards) {
             listOfFigures.add(cards.figure)
         }
-        val figure: Figure = if(card == "9"){
-            Figure.valueOf("NINE")
-        }else if(card == "10"){
-            Figure.valueOf("TEN")
-        }else{
-            Figure.valueOf(card.uppercase())
-        }
+        val figure: Figure = validator(answer1)
 
         val contain = listOfFigures.contains(figure)
         return contain
