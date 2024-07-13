@@ -12,6 +12,7 @@ class CheckIfExistTest {
     private val card3: Card = Card(Color.HEART,Figure.JACK)
     private val card4: Card = Card(Color.HEART,Figure.QUEEN)
     private val card5: Card = Card(Color.HEART,Figure.KING)
+    private val card6: Card = Card(Color.HEART,Figure.ACE)
     @Test
     fun checkOneCardPositive(){
 
@@ -166,6 +167,59 @@ class CheckIfExistTest {
         deck.add(card5)
         val full = Full()
         val passed = full.check(deck, "9","Jack")
+        assertEquals(false, passed)
+    }
+    @Test
+    fun checkSmallStraightPositive(){
+
+        val deck: ArrayList<Card> = arrayListOf()
+        deck.add(card1)
+        deck.add(card2)
+        deck.add(card3)
+        deck.add(card4)
+        deck.add(card5)
+        val straight = Straight()
+        val passed = straight.check(deck, "small","")
+        assertEquals(true, passed)
+    }
+    @Test
+    fun checkSmallStraightNegative(){
+
+        val deck: ArrayList<Card> = arrayListOf()
+        deck.add(card2)
+        deck.add(card3)
+        deck.add(card4)
+        deck.add(card5)
+        deck.add(card6)
+        val straight = Straight()
+        val passed = straight.check(deck, "small","")
+        assertEquals(false, passed)
+    }
+    @Test
+    fun checkBigStraightPositive(){
+
+        val deck: ArrayList<Card> = arrayListOf()
+        deck.add(card2)
+        deck.add(card3)
+        deck.add(card4)
+        deck.add(card5)
+        deck.add(card6)
+        val straight = Straight()
+        val passed = straight.check(deck, "big","")
+        assertEquals(true, passed)
+    }
+    @Test
+    fun checkBigStraightNegative(){
+
+        val deck: ArrayList<Card> = arrayListOf()
+        deck.add(card1)
+        deck.add(card2)
+        deck.add(card3)
+        deck.add(card4)
+        deck.add(card3)
+
+        val straight = Straight()
+        val passed = straight.check(deck, "big","")
         assertEquals(false, passed)
     }
 }
