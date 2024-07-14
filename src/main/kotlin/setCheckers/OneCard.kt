@@ -11,7 +11,7 @@ class OneCard : CheckIfExist() {
         for (cards in listOfCards) {
             listOfFigures.add(cards.figure)
         }
-        val figure: Figure = validator(answer1)
+        val figure: Figure = validatorFigure(answer1)
 
         val contain = listOfFigures.contains(figure)
         return contain

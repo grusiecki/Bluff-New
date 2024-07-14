@@ -10,7 +10,7 @@ class ThreeCards : CheckIfExist() {
         for (card1 in listOfCards) {
             listOfFigures.add(card1.figure)
         }
-        val figure: Figure = validator(answer1)
+        val figure: Figure = validatorFigure(answer1)
         val occurrences = listOfFigures.count{it == figure}
         contain = occurrences >= 3
         return contain    }

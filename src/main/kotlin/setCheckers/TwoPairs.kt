@@ -10,8 +10,8 @@ class TwoPairs: CheckIfExist() {
         for (card1 in listOfCards) {
             listOfFigures.add(card1.figure)
         }
-        val figure1: Figure = validator(answer1)
-        val figure2: Figure = validator(answer2)
+        val figure1: Figure = validatorFigure(answer1)
+        val figure2: Figure = validatorFigure(answer2)
         val occurrences1 = listOfFigures.count{it == figure1}
         val occurrences2 = listOfFigures.count{it == figure2}
 
