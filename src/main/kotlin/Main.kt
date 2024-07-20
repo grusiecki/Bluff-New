@@ -12,10 +12,9 @@ fun main() {
     game.beforeFirstGame();
     game.enterName();
     game.setCards();
-  //  game.round();
+    game.round();
 
-    var list = oneCard.getAllPlayedCards(game.listOfPlayers)
-    println(oneCard.check(list, game.currentAnswer1, game.currentAnswer2))
+
 
 
 }

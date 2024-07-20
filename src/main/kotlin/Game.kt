@@ -1,12 +1,19 @@
 package org.example
 
+import org.example.setCheckers.*
+
 class Game() {
     private var numberOfPlayersStr = "0"
     private var numberOfPlayers = 0
     var listOfPlayers = ArrayList<Player>()
+    var listOfCards = ArrayList<Card>()
     private var deck = Deck()
     var currentAnswer1 = "9"
     var currentAnswer2 = "9"
+    var previousSet = "1 card"
+    var previousPlayer = Player()
+    var actualPlayer = Player()
+
 
     fun beforeFirstGame() {
         do {
@@ -35,11 +42,13 @@ class Game() {
         for (player in listOfPlayers) {
             for (card in 1..player.numberOfCards) {
                 player.add(deck.hand[card])
+                listOfCards.add(deck.hand[card])
+                println(deck.hand[card].figure)
             }
         }
+
     }
 
-    //ogarnac licytacje
     fun round() {
         var typeSet = "1 card"
         var beforeSet = "1 card"
@@ -54,6 +63,7 @@ class Game() {
         while (!check) {
             for (player in listOfPlayers) {
                 while (checker == Pair(false, false)) {
+                    actualPlayer = player
                     println("${player.name}: write what kind of set is in playing deck or check (1 card, pair, two pairs, three, straight, full, four, flush, royal flush")
                     typeSet = readln()
                     val ch1 = Checkers()
@@ -64,6 +74,7 @@ class Game() {
                             0 -> {
                                 checker = falseInfo()
                             }
+
                             1 -> {
                                 pairAnswer = ch1.checkAnswerCardLevel(typeSet)
                                 when (typeSet) {
@@ -158,6 +169,7 @@ class Game() {
 
                                 }
                             }
+
                             else -> {
                                 pairAnswer = ch1.checkAnswerCardLevel(typeSet)
                                 checker = Pair(pairAnswer.first, false)
@@ -173,7 +185,13 @@ class Game() {
                     beforeSet = typeSet
                     previousAnswer1 = currentAnswer1
                     previousAnswer2 = currentAnswer2
+                    previousPlayer = player
+
+                }else if(checker == Pair(true, true)){
+                    checkIfExist(beforeSet, previousAnswer1, previousAnswer2, previousPlayer, actualPlayer, listOfCards)
+
                 }
+
             }
 //
             check = checker.second
@@ -188,4 +206,69 @@ class Game() {
         return Pair(false, false)
     }
 
+    private fun checkIfExist(
+        typeOfSet: String,
+        answer1: String,
+        answer2: String,
+        previousPlayer: Player,
+        actualPlayer: Player,
+        listOfCards: ArrayList<Card>
+    ) {
+        var exist = false
+        when (typeOfSet) {
+            "1 card" -> {
+                val oneCard = OneCard()
+                exist = oneCard.check(listOfCards, answer1, answer2)
+                whoGetsTheCard(exist,actualPlayer,previousPlayer)
+            }
+            "pair" -> {
+                val pair = OnePair()
+                exist = pair.check(listOfCards, answer1, answer2)
+                whoGetsTheCard(exist,actualPlayer,previousPlayer)
+            }
+            "two pairs" -> {
+                val twoPairs = TwoPairs()
+                exist = twoPairs.check(listOfCards, answer1, answer2)
+                whoGetsTheCard(exist,actualPlayer,previousPlayer)
+            }
+            "three" -> {
+                val three = ThreeCards()
+                exist = three.check(listOfCards, answer1, answer2)
+                whoGetsTheCard(exist,actualPlayer,previousPlayer)
+            }
+            "straight" -> {
+                val straight = Straight()
+                exist = straight.check(listOfCards, answer1, answer2)
+                whoGetsTheCard(exist,actualPlayer,previousPlayer)
+            }
+            "full" -> {
+                val full = Full()
+                exist = full.check(listOfCards, answer1, answer2)
+                whoGetsTheCard(exist,actualPlayer,previousPlayer)
+            }
+            "four" -> {
+                val four = FourCards()
+                exist = four.check(listOfCards, answer1, answer2)
+                whoGetsTheCard(exist,actualPlayer,previousPlayer)
+            }
+            "flush" -> {
+                val flush = Flush()
+                exist = flush.check(listOfCards, answer1, answer2)
+                whoGetsTheCard(exist,actualPlayer,previousPlayer)
+            }
+            "royal flush" -> {
+                val royalFlush = RoyalFlush()
+                exist = royalFlush.check(listOfCards, answer1, answer2)
+                whoGetsTheCard(exist,actualPlayer,previousPlayer)
+            }
+        }
+    }
+    private fun whoGetsTheCard(exist: Boolean, actualPlayer: Player, previousPlayer: Player){
+        if (exist) {
+            actualPlayer.numberOfCards++
+        }else{
+            previousPlayer.numberOfCards++
+        }
+    }
+//TODO adding test for adding card, check wtf with deck of cards, add end of the game with someone lose(6th card)
 }

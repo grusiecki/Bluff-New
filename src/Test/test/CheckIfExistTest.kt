@@ -49,8 +49,8 @@ class CheckIfExistTest {
         deck.add(jackHeart)
         deck.add(queenHeart)
         deck.add(kingHeart)
-        val twoCards = TwoCards()
-        val passed = twoCards.check(deck, "9","mockup")
+        val onePair = OnePair()
+        val passed = onePair.check(deck, "9","mockup")
         assertEquals(true, passed)
     }
     @Test
@@ -62,8 +62,8 @@ class CheckIfExistTest {
         deck.add(jackHeart)
         deck.add(queenHeart)
         deck.add(kingHeart)
-        val twoCards = TwoCards()
-        val passed = twoCards.check(deck, "9","mockup")
+        val onePair = OnePair()
+        val passed = onePair.check(deck, "9","mockup")
         assertEquals(false, passed)
     }
     @Test
