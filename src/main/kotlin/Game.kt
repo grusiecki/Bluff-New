@@ -341,5 +341,5 @@ class Game() {
             players.addAll(newOrder)
         }
     }
-//TODO adding test for ending game, check wtf with deck of cards, add fun that the looser start next round (done, make tests)
+//TODO adding test for ending game, check wtf with deck of cards, make test for looser starts next round
 }
