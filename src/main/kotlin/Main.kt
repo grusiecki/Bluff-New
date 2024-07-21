@@ -11,7 +11,6 @@ fun main() {
     val oneCard = OneCard();
     game.beforeFirstGame();
     game.enterName();
-    game.setCards();
     game.round();
 
 
