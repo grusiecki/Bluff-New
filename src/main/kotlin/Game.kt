@@ -41,13 +41,16 @@ class Game() {
 
     private fun setCards() {
         deck.shuffle()
-        deck.shuffle()
         for (player in listOfPlayers) {
             player.hand.clear()
             for (card in 1..player.numberOfCards) {
                 player.add(deck.hand[card])
                 listOfCards.add(deck.hand[card])
                 println(deck.hand[card].figure)
+                println(deck.hand[card].color)
+                deck.hand.add(deck.hand[card])
+                deck.hand.removeAt(0)
+
             }
         }
 
@@ -341,5 +344,5 @@ class Game() {
             players.addAll(newOrder)
         }
     }
-//TODO adding test for ending game, check wtf with deck of cards, make test for looser starts next round
+//TODO adding test for ending game, make test for looser starts next round
 }

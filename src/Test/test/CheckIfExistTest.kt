@@ -7,15 +7,16 @@ import kotlin.test.assertEquals
 
 class CheckIfExistTest {
 
-    private val nineHeart: Card = Card(Color.HEART,Figure.NINE)
-    private val tenHeart: Card = Card(Color.HEART,Figure.TEN)
-    private val jackHeart: Card = Card(Color.HEART,Figure.JACK)
-    private val queenHeart: Card = Card(Color.HEART,Figure.QUEEN)
-    private val kingHeart: Card = Card(Color.HEART,Figure.KING)
-    private val aceHeart: Card = Card(Color.HEART,Figure.ACE)
-    private val aceClub: Card = Card(Color.CLUB,Figure.ACE)
+    private val nineHeart: Card = Card(Color.HEART, Figure.NINE)
+    private val tenHeart: Card = Card(Color.HEART, Figure.TEN)
+    private val jackHeart: Card = Card(Color.HEART, Figure.JACK)
+    private val queenHeart: Card = Card(Color.HEART, Figure.QUEEN)
+    private val kingHeart: Card = Card(Color.HEART, Figure.KING)
+    private val aceHeart: Card = Card(Color.HEART, Figure.ACE)
+    private val aceClub: Card = Card(Color.CLUB, Figure.ACE)
+
     @Test
-    fun checkOneCardPositive(){
+    fun checkOneCardPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -24,11 +25,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val oneCard = OneCard()
-        val passed =oneCard.check(deck, "9","mockup")
+        val passed = oneCard.check(deck, "9", "mockup")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkOneCardNegative(){
+    fun checkOneCardNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
 
@@ -37,11 +39,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val oneCard = OneCard()
-        val passed =oneCard.check(deck, "9","mockup")
+        val passed = oneCard.check(deck, "9", "mockup")
         assertEquals(false, passed)
     }
+
     @Test
-    fun checkTwoCardPositive(){
+    fun checkTwoCardPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -50,11 +53,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val onePair = OnePair()
-        val passed = onePair.check(deck, "9","mockup")
+        val passed = onePair.check(deck, "9", "mockup")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkTwoCardNegative(){
+    fun checkTwoCardNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -63,11 +67,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val onePair = OnePair()
-        val passed = onePair.check(deck, "9","mockup")
+        val passed = onePair.check(deck, "9", "mockup")
         assertEquals(false, passed)
     }
+
     @Test
-    fun checkThreeCardPositive(){
+    fun checkThreeCardPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -76,11 +81,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val threeCards = ThreeCards()
-        val passed = threeCards.check(deck, "9","mockup")
+        val passed = threeCards.check(deck, "9", "mockup")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkThreeCardNegative(){
+    fun checkThreeCardNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -89,11 +95,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val threeCards = ThreeCards()
-        val passed = threeCards.check(deck, "9","mockup")
+        val passed = threeCards.check(deck, "9", "mockup")
         assertEquals(false, passed)
     }
+
     @Test
-    fun checkFourCardPositive(){
+    fun checkFourCardPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -102,11 +109,12 @@ class CheckIfExistTest {
         deck.add(nineHeart)
         deck.add(kingHeart)
         val fourCards = FourCards()
-        val passed = fourCards.check(deck, "9","mockup")
+        val passed = fourCards.check(deck, "9", "mockup")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkFourCardNegative(){
+    fun checkFourCardNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -115,11 +123,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val fourCards = FourCards()
-        val passed = fourCards.check(deck, "9","mockup")
+        val passed = fourCards.check(deck, "9", "mockup")
         assertEquals(false, passed)
     }
+
     @Test
-    fun checkTwoPairsPositive(){
+    fun checkTwoPairsPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -128,11 +137,12 @@ class CheckIfExistTest {
         deck.add(jackHeart)
         deck.add(jackHeart)
         val twoPairs = TwoPairs()
-        val passed = twoPairs.check(deck, "9","Jack")
+        val passed = twoPairs.check(deck, "9", "Jack")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkTwoPairsNegative(){
+    fun checkTwoPairsNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -141,11 +151,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val twoPairs = TwoPairs()
-        val passed = twoPairs.check(deck, "9","Jack")
+        val passed = twoPairs.check(deck, "9", "Jack")
         assertEquals(false, passed)
     }
+
     @Test
-    fun checkFullPositive(){
+    fun checkFullPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(tenHeart)
@@ -154,11 +165,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(queenHeart)
         val full = Full()
-        val passed = full.check(deck, "10","Queen")
+        val passed = full.check(deck, "10", "Queen")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkFullNegative(){
+    fun checkFullNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -167,11 +179,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val full = Full()
-        val passed = full.check(deck, "9","Jack")
+        val passed = full.check(deck, "9", "Jack")
         assertEquals(false, passed)
     }
+
     @Test
-    fun checkSmallStraightPositive(){
+    fun checkSmallStraightPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -180,11 +193,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val straight = Straight()
-        val passed = straight.check(deck, "small","")
+        val passed = straight.check(deck, "small", "")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkSmallStraightNegative(){
+    fun checkSmallStraightNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(tenHeart)
@@ -193,11 +207,12 @@ class CheckIfExistTest {
         deck.add(kingHeart)
         deck.add(aceHeart)
         val straight = Straight()
-        val passed = straight.check(deck, "small","")
+        val passed = straight.check(deck, "small", "")
         assertEquals(false, passed)
     }
+
     @Test
-    fun checkBigStraightPositive(){
+    fun checkBigStraightPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(tenHeart)
@@ -206,11 +221,12 @@ class CheckIfExistTest {
         deck.add(kingHeart)
         deck.add(aceHeart)
         val straight = Straight()
-        val passed = straight.check(deck, "big","")
+        val passed = straight.check(deck, "big", "")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkBigStraightNegative(){
+    fun checkBigStraightNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -220,11 +236,12 @@ class CheckIfExistTest {
         deck.add(jackHeart)
 
         val straight = Straight()
-        val passed = straight.check(deck, "big","")
+        val passed = straight.check(deck, "big", "")
         assertEquals(false, passed)
     }
+
     @Test
-    fun checkFlushPositive(){
+    fun checkFlushPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(tenHeart)
@@ -233,11 +250,12 @@ class CheckIfExistTest {
         deck.add(kingHeart)
         deck.add(aceHeart)
         val flush = Flush()
-        val passed = flush.check(deck, "heart","")
+        val passed = flush.check(deck, "heart", "")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkFlushNegative(){
+    fun checkFlushNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -247,11 +265,12 @@ class CheckIfExistTest {
         deck.add(aceClub)
 
         val flush = Flush()
-        val passed = flush.check(deck, "heart","")
+        val passed = flush.check(deck, "heart", "")
         assertEquals(false, passed)
     }
+
     @Test
-    fun checkSmallRoyalFlushPositive(){
+    fun checkSmallRoyalFlushPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -260,11 +279,12 @@ class CheckIfExistTest {
         deck.add(queenHeart)
         deck.add(kingHeart)
         val straight = Straight()
-        val passed = straight.check(deck, "small","heart")
+        val passed = straight.check(deck, "small", "heart")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkSmallRoyalFlushNegative(){
+    fun checkSmallRoyalFlushNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(tenHeart)
@@ -273,11 +293,12 @@ class CheckIfExistTest {
         deck.add(kingHeart)
         deck.add(aceClub)
         val straight = Straight()
-        val passed = straight.check(deck, "small","heart")
+        val passed = straight.check(deck, "small", "heart")
         assertEquals(false, passed)
     }
+
     @Test
-    fun checkBigRoyalFlushPositive(){
+    fun checkBigRoyalFlushPositive() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(tenHeart)
@@ -286,11 +307,12 @@ class CheckIfExistTest {
         deck.add(kingHeart)
         deck.add(aceHeart)
         val straight = Straight()
-        val passed = straight.check(deck, "big","heart")
+        val passed = straight.check(deck, "big", "heart")
         assertEquals(true, passed)
     }
+
     @Test
-    fun checkBigRoyalFlushNegative(){
+    fun checkBigRoyalFlushNegative() {
 
         val deck: ArrayList<Card> = arrayListOf()
         deck.add(nineHeart)
@@ -300,7 +322,7 @@ class CheckIfExistTest {
         deck.add(jackHeart)
 
         val straight = Straight()
-        val passed = straight.check(deck, "big","heart")
+        val passed = straight.check(deck, "big", "heart")
         assertEquals(false, passed)
     }
 }
