@@ -335,7 +335,7 @@ class Game() {
         }
     }
 
-    private fun rotatePlayers(players: ArrayList<Player>, loser: Player) {
+     fun rotatePlayers(players: ArrayList<Player>, loser: Player) {
         val loserIndex = players.indexOf(loser)
         if (loserIndex != -1) {
 
@@ -344,5 +344,5 @@ class Game() {
             players.addAll(newOrder)
         }
     }
-//TODO adding test for ending game, make test for looser starts next round
+//TODO adding test for ending game,
 }
